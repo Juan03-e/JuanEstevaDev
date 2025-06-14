@@ -1,5 +1,10 @@
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { GraduationCap } from "lucide-react";
 
 const educationData = [
@@ -20,40 +25,44 @@ const Education = () => {
   return (
     <section id="education" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">Education</h2>
-        <div className="relative max-w-3xl mx-auto">
-          {/* Vertical Timeline */}
-          <div className="absolute left-4 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
-          <ul className="space-y-12">
+        <h2 className="text-4xl font-bold text-center mb-12">Education</h2>
+        <div className="max-w-3xl mx-auto">
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="item-0"
+            className="w-full space-y-4"
+          >
             {educationData.map((edu, index) => (
-              <li
+              <AccordionItem
+                value={`item-${index}`}
                 key={index}
-                className="relative pl-12 animate-fade-in"
-                style={{ animationDelay: `${index * 200}ms`, opacity: 0 }}
+                className="bg-background/50 border-border backdrop-blur-sm shadow-sm rounded-lg hover:shadow-primary/10 transition-shadow duration-300 overflow-hidden"
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-4 top-2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 border-4 border-background"></div>
-                
-                <Card className="bg-background/50 border-border backdrop-blur-sm shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
-                  <CardHeader>
-                    <div className="flex items-start space-x-4">
-                      <div className="mt-1">
-                        <GraduationCap className="w-8 h-8 text-primary" />
-                      </div>
-                      <div>
-                        <CardTitle>{edu.degree}</CardTitle>
-                        <CardDescription>{edu.institution}</CardDescription>
-                      </div>
+                <AccordionTrigger className="p-6 text-left hover:no-underline">
+                  <div className="flex items-start space-x-4">
+                    <GraduationCap className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-semibold text-lg">{edu.degree}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {edu.institution}
+                      </p>
                     </div>
-                  </CardHeader>
-                  <CardContent className="pl-16">
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 pr-6 pl-12">
+                  <div className="pl-6 border-l-2 border-primary/20">
                     <p className="text-muted-foreground">{edu.period}</p>
-                    {edu.details && <p className="text-sm text-muted-foreground mt-1">{edu.details}</p>}
-                  </CardContent>
-                </Card>
-              </li>
+                    {edu.details && (
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {edu.details}
+                      </p>
+                    )}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </ul>
+          </Accordion>
         </div>
       </div>
     </section>
