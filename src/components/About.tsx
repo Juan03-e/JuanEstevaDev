@@ -20,7 +20,7 @@ const About = () => {
             </Avatar>
           </div>
           <div className="animate-in fade-in zoom-in-95 duration-500 delay-200">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-center md:text-left">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
               Juan Pablo Esteva
             </h3>
             <div className="text-lg text-muted-foreground space-y-4 text-center md:text-left">
