@@ -3,6 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .nav-link-desktop {
+    @apply relative;
+  }
+
+  .nav-link-desktop::after {
+    @apply content-[''] absolute h-[2px] w-full bg-primary bottom-[-5px] left-0 scale-x-0 origin-right transition-transform duration-300 ease-out;
+  }
+
+  .nav-link-desktop:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 4%;

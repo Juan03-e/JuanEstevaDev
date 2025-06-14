@@ -33,7 +33,7 @@ const Header = () => {
         <ul className="hidden md:flex space-x-8">
           {navItems.map((item) => (
             <li key={item.id}>
-              <a href={`#${item.id}`} className="hover:text-primary transition-colors text-muted-foreground font-medium">
+              <a href={`#${item.id}`} className="hover:text-primary transition-colors text-muted-foreground font-medium nav-link-desktop">
                 {item.text}
               </a>
             </li>
