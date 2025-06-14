@@ -16,7 +16,7 @@ const FloatingIcons = () => {
   useEffect(() => {
     const generateSymbols = () => {
       const newSymbols: FloatingSymbol[] = [];
-      const count = 30;
+      const count = 40; // Aumentado para mayor dispersión
       for (let i = 0; i < count; i++) {
         newSymbols.push({
           id: i,
@@ -57,4 +57,3 @@ const FloatingIcons = () => {
 };
 
 export default FloatingIcons;
-
