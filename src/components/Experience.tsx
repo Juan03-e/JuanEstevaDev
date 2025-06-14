@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -45,8 +46,12 @@ const Experience = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
         <div className="max-w-3xl mx-auto flex flex-col gap-8">
-          {experienceData.map((job) => (
-            <Card key={job.company} className="border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:border-primary/50">
+          {experienceData.map((job, index) => (
+            <Card 
+              key={job.company} 
+              className="border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:border-primary/50 animate-fade-in opacity-0"
+              style={{ animationDelay: `${index * 200}ms` }}
+            >
               <CardHeader>
                 <p className="text-sm font-semibold text-primary">{job.period}</p>
                 <CardTitle>{job.role}</CardTitle>
