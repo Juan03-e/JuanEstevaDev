@@ -1,53 +1,35 @@
 
-import { useMemo, useRef } from 'react'
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Points, PointMaterial } from '@react-three/drei'
+import type { Mesh } from 'three'
 
-function Starfield(props: any) {
-  const ref: any = useRef()
+function Box() {
+  const meshRef = useRef<Mesh>(null!)
 
-  const positions = useMemo(() => {
-    const points = new Float32Array(5000 * 3);
-    for (let i = 0; i < 5000; i++) {
-        let i3 = i * 3;
-        const r = 3 + Math.random() * 2;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(Math.random() * 2 - 1);
-        points[i3] = r * Math.sin(phi) * Math.cos(theta);
-        points[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-        points[i3 + 2] = r * Math.cos(phi);
-    }
-    return points;
-  }, []);
-
-  useFrame((state, delta) => {
-    if (ref.current) {
-        ref.current.rotation.x -= delta / 25
-        ref.current.rotation.y -= delta / 40
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.005
+      meshRef.current.rotation.y += 0.005
     }
   })
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={positions} stride={3} frustumCulled={false} {...props}>
-        <PointMaterial
-          transparent
-          color="#ffffff"
-          size={0.009}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
-      </Points>
-    </group>
+    <mesh ref={meshRef} scale={1.5}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={'#ffffff'} wireframe />
+    </mesh>
   )
 }
 
 export default function ThreeDScene() {
   return (
     <div className="absolute inset-0 z-0 bg-transparent">
-        <Canvas camera={{ position: [0, 0, 1] }}>
-            <Starfield />
-        </Canvas>
+      <Canvas camera={{ position: [0, 0, 3] }}>
+        <ambientLight intensity={Math.PI / 2} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
+        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+        <Box />
+      </Canvas>
     </div>
   )
 }
