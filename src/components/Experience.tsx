@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useState, useEffect, useRef } from "react";
 
@@ -36,16 +35,6 @@ const experienceData = [
       "Developed custom scripts to enhance operational efficiency and user interaction with the platform.",
       "Provided technical support to international clients, focusing on integration, issue diagnosis, and troubleshooting in programmatic advertising technologies.",
       "Resolved over 200 support tickets using HubSpot and Zendesk, maintaining a customer satisfaction rate above 90%."
-    ],
-  },
-  {
-    role: "Technical Help Desk",
-    company: "Corporación América",
-    period: "Carrasco International Airport - Uruguay | Feb 2023",
-    tasks: [
-      "Installed and configured software and hardware for internal workstations, ensuring smooth operational deployment.",
-      "Assembled and prepared computer systems for corporate use, supporting efficient onboarding and system readiness.",
-      "Diagnosed and resolved software issues, reducing downtime and supporting business continuity."
     ],
   },
 ];

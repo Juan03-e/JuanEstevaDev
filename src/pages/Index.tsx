@@ -7,10 +7,12 @@ import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import FloatingIcons from "@/components/FloatingIcons";
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-background font-sans">
+    <div className="flex flex-col min-h-screen font-sans">
+      <FloatingIcons />
       <Header />
       <main id="home" className="flex-grow pt-16">
         <Hero />
