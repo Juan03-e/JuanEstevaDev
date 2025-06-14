@@ -44,34 +44,23 @@ const Experience = () => {
     <section id="experience" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
-        <div className="max-w-3xl mx-auto">
-          <Tabs defaultValue={experienceData[0].company} className="w-full">
-            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3">
-              {experienceData.map((job) => (
-                <TabsTrigger key={job.company} value={job.company}>
-                  {job.company}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {experienceData.map((job) => (
-              <TabsContent key={job.company} value={job.company} className="mt-4">
-                <Card className="border-border bg-background/50 backdrop-blur-sm">
-                  <CardHeader>
-                    <p className="text-sm font-semibold text-primary">{job.period}</p>
-                    <CardTitle>{job.role}</CardTitle>
-                    <CardDescription>{job.company}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                      {job.tasks.map((task, i) => (
-                        <li key={i}>{task}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            ))}
-          </Tabs>
+        <div className="max-w-3xl mx-auto flex flex-col gap-8">
+          {experienceData.map((job) => (
+            <Card key={job.company} className="border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:border-primary/50">
+              <CardHeader>
+                <p className="text-sm font-semibold text-primary">{job.period}</p>
+                <CardTitle>{job.role}</CardTitle>
+                <CardDescription>{job.company}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                  {job.tasks.map((task, i) => (
+                    <li key={i}>{task}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
