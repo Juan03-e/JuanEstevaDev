@@ -1,5 +1,4 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const paragraphs = [
@@ -21,18 +20,14 @@ const About = () => {
             </Avatar>
           </div>
           <div className="animate-in fade-in zoom-in-95 duration-500 delay-200">
-            <Card className="bg-transparent border-0 shadow-none md:bg-secondary/50 md:border md:border-border md:backdrop-blur-sm md:shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl text-center md:text-left">Professional Summary</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-lg text-muted-foreground space-y-4 text-center md:text-left">
-                  {paragraphs.map((text, index) => (
-                    <p key={index}>{text}</p>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-center md:text-left">
+              Turning complex ideas into <span className="text-muted-foreground">elegant solutions.</span>
+            </h3>
+            <div className="text-lg text-muted-foreground space-y-4 text-center md:text-left">
+              {paragraphs.map((text, index) => (
+                <p key={index}>{text}</p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
