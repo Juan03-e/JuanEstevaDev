@@ -1,7 +1,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb } from "react-icons/si";
-import { Bot, BarChart, GitMerge, Mic, Sparkles } from "lucide-react";
+import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb, SiGit, SiGithub } from "react-icons/si";
+import { Bot, BarChart, GitMerge, Mic, Sparkles, Webhook } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const skillsData = {
@@ -19,6 +19,9 @@ const skillsData = {
     { name: "Razor", icon: <span className="font-bold text-fuchsia-500">{"</>"}</span>, description: "Sintaxis de marcado para incrustar código C# en páginas web." },
     { name: "SQL", icon: <span className="font-extrabold text-[#CC2927]">SQL</span>, description: "Lenguaje estándar para gestionar y manipular bases de datos relacionales." },
     { name: "MongoDB", icon: <SiMongodb style={{ color: '#47A248' }} />, description: "Base de datos NoSQL orientada a documentos, ideal para aplicaciones escalables." },
+    { name: "APIs Restful", icon: <Webhook className="text-sky-500" />, description: "Diseño y desarrollo de APIs siguiendo los principios de la arquitectura REST." },
+    { name: "Git", icon: <SiGit style={{ color: '#F05032' }} />, description: "Sistema de control de versiones distribuido para el seguimiento de cambios en el código fuente." },
+    { name: "GitHub", icon: <SiGithub />, description: "Plataforma de alojamiento de repositorios Git que ofrece herramientas de colaboración para el desarrollo de software." },
   ],
   interests: [
     { name: "Clean code", icon: <Sparkles className="text-yellow-400" /> },
