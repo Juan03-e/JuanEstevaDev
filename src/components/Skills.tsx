@@ -2,22 +2,23 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb } from "react-icons/si";
 import { Bot, BarChart, GitMerge, Mic, Sparkles } from "lucide-react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const skillsData = {
   frontend: [
-    { name: "JavaScript", icon: <SiJavascript style={{ color: '#F7DF1E' }} /> },
-    { name: "HTML", icon: <SiHtml5 style={{ color: '#E34F26' }} /> },
-    { name: "CSS", icon: <SiCss3 style={{ color: '#1572B6' }} /> },
-    { name: "React", icon: <SiReact style={{ color: '#61DAFB' }} /> },
-    { name: "Bootstrap", icon: <SiBootstrap style={{ color: '#7952B3' }} /> },
-    { name: "Ionic", icon: <SiIonic style={{ color: '#3880FF' }} /> },
+    { name: "JavaScript", icon: <SiJavascript style={{ color: '#F7DF1E' }} />, description: "Un lenguaje de programación de alto nivel, esencial para el desarrollo web interactivo." },
+    { name: "HTML", icon: <SiHtml5 style={{ color: '#E34F26' }} />, description: "Lenguaje de marcado estándar para estructurar contenido en la web." },
+    { name: "CSS", icon: <SiCss3 style={{ color: '#1572B6' }} />, description: "Lenguaje para describir la presentación y el estilo de los documentos HTML." },
+    { name: "React", icon: <SiReact style={{ color: '#61DAFB' }} />, description: "Biblioteca de JavaScript para construir interfaces de usuario o componentes de UI." },
+    { name: "Bootstrap", icon: <SiBootstrap style={{ color: '#7952B3' }} />, description: "Framework de CSS para desarrollar sitios web responsivos y mobile-first." },
+    { name: "Ionic", icon: <SiIonic style={{ color: '#3880FF' }} />, description: "SDK para el desarrollo de aplicaciones móviles híbridas y multiplataforma." },
   ],
   backend: [
-    { name: "C#", icon: <SiSharp style={{ color: '#239120' }} /> },
-    { name: ".NET8", icon: <SiDotnet style={{ color: '#512BD4' }} /> },
-    { name: "Razor", icon: <span className="font-bold text-fuchsia-500">{"</>"}</span> },
-    { name: "SQL", icon: <span className="font-extrabold text-[#CC2927]">SQL</span> },
-    { name: "MongoDB", icon: <SiMongodb style={{ color: '#47A248' }} /> },
+    { name: "C#", icon: <SiSharp style={{ color: '#239120' }} />, description: "Lenguaje de programación moderno y orientado a objetos desarrollado por Microsoft." },
+    { name: ".NET8", icon: <SiDotnet style={{ color: '#512BD4' }} />, description: "Framework para construir aplicaciones multiplataforma con alto rendimiento." },
+    { name: "Razor", icon: <span className="font-bold text-fuchsia-500">{"</>"}</span>, description: "Sintaxis de marcado para incrustar código C# en páginas web." },
+    { name: "SQL", icon: <span className="font-extrabold text-[#CC2927]">SQL</span>, description: "Lenguaje estándar para gestionar y manipular bases de datos relacionales." },
+    { name: "MongoDB", icon: <SiMongodb style={{ color: '#47A248' }} />, description: "Base de datos NoSQL orientada a documentos, ideal para aplicaciones escalables." },
   ],
   interests: [
     { name: "Clean code", icon: <Sparkles className="text-yellow-400" /> },
@@ -43,17 +44,31 @@ const Skills = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pt-4">
-                    {skills.map((skill, index) => (
-                      <div
-                        key={index}
-                        className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square"
-                      >
-                        <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
-                          {skill.icon}
+                    {skills.map((skill: any, index) => {
+                      const skillItem = (
+                        <div
+                          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square"
+                        >
+                          <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
+                            {skill.icon}
+                          </div>
+                          <p className="text-sm text-center text-muted-foreground font-medium">{skill.name}</p>
                         </div>
-                        <p className="text-sm text-center text-muted-foreground font-medium">{skill.name}</p>
-                      </div>
-                    ))}
+                      );
+
+                      if (key === 'frontend' || key === 'backend') {
+                        return (
+                          <HoverCard key={index}>
+                            <HoverCardTrigger asChild>{skillItem}</HoverCardTrigger>
+                            <HoverCardContent className="w-64 bg-popover/90 backdrop-blur-sm border-border">
+                              <p className="text-sm text-popover-foreground">{skill.description}</p>
+                            </HoverCardContent>
+                          </HoverCard>
+                        );
+                      }
+                      
+                      return <div key={index}>{skillItem}</div>;
+                    })}
                   </div>
                 </AccordionContent>
               </AccordionItem>
