@@ -1,4 +1,3 @@
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb } from "react-icons/si";
 import { Bot, BarChart, GitMerge, Mic, Sparkles } from "lucide-react";
@@ -38,7 +37,7 @@ const Skills = () => {
         <div className="max-w-4xl mx-auto">
           <Accordion type="multiple" className="w-full space-y-4">
             {Object.entries(skillsData).map(([key, skills]) => (
-              <AccordionItem key={key} value={key} className="bg-card/50 border border-border rounded-lg px-4 backdrop-blur-sm">
+              <AccordionItem key={key} value={key} className="bg-card/50 border border-border rounded-lg px-4">
                 <AccordionTrigger className="text-2xl font-semibold capitalize hover:no-underline text-primary">
                   {key === 'interests' ? 'Intereses' : key}
                 </AccordionTrigger>
