@@ -1,6 +1,26 @@
 
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Box } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import * as THREE from 'three';
+
+const SpinningBox = () => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += delta * 0.5;
+      meshRef.current.rotation.x += delta * 0.5;
+    }
+  });
+
+  return (
+    <mesh ref={meshRef}>
+      <boxGeometry args={[1.5, 1.5, 1.5]} />
+      <meshStandardMaterial color={'#61DAFB'} wireframe />
+    </mesh>
+  );
+};
+
 
 const ThreeDScene = () => {
   return (
@@ -8,12 +28,7 @@ const ThreeDScene = () => {
       <Canvas>
         <ambientLight intensity={1.5} />
         <pointLight position={[10, 10, 10]} intensity={2} />
-        
-        <Box args={[1.5, 1.5, 1.5]}>
-          <meshStandardMaterial color={'#61DAFB'} wireframe />
-        </Box>
-
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1.5} />
+        <SpinningBox />
       </Canvas>
     </div>
   );
