@@ -1,6 +1,5 @@
-
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useEffect, useRef, useState } from "react";
 
 const experienceData = [
   {
@@ -41,16 +40,44 @@ const experienceData = [
 ];
 
 const Experience = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      observer.observe(currentSection);
+    }
+
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection);
+      }
+    };
+  }, []);
+
   return (
-    <section id="experience" className="py-20 md:py-32 bg-secondary/30">
+    <section id="experience" ref={sectionRef} className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
         <div className="max-w-3xl mx-auto flex flex-col gap-8">
           {experienceData.map((job, index) => (
             <Card 
               key={job.company} 
-              className="border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:border-primary/50 animate-fade-in opacity-0"
-              style={{ animationDelay: `${index * 200}ms` }}
+              className={`border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:border-primary/50 opacity-0 ${isVisible ? 'animate-fade-in' : ''}`}
+              style={isVisible ? { animationDelay: `${index * 200}ms` } : {}}
             >
               <CardHeader>
                 <p className="text-sm font-semibold text-primary">{job.period}</p>
