@@ -90,9 +90,11 @@ export default {
 					}
 				},
         'float': {
-          '0%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-40px)' },
-          '100%': { transform: 'translateY(0px)' },
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '20%': { transform: 'translate(5px, -10px)' },
+          '40%': { transform: 'translate(-8px, 12px)' },
+          '60%': { transform: 'translate(10px, 8px)' },
+          '80%': { transform: 'translate(-5px, -5px)' },
         }
 			},
 			animation: {
