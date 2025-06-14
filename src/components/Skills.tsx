@@ -1,4 +1,5 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb } from "react-icons/si";
 import { Bot, BarChart, GitMerge, Mic, Sparkles } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
@@ -25,9 +26,39 @@ const skillsData = {
     { name: "Análisis de datos", icon: <BarChart className="text-green-400" /> },
     { name: "Fundamentos de DevOps", icon: <GitMerge className="text-orange-400" /> },
     { name: "Oratoria", icon: <Mic className="text-purple-400" /> },
-    { name: "MMA", icon: <span className="font-extrabold">MMA</span> },
   ],
 };
+
+const SkillGrid = ({ skills, category }: { skills: {name: string, icon: JSX.Element, description?: string}[], category: string }) => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pt-4">
+    {skills.map((skill, index) => {
+      const skillItem = (
+        <div
+          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square animate-in fade-in zoom-in-95 duration-700"
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
+          <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
+            {skill.icon}
+          </div>
+          <p className="text-sm text-center text-muted-foreground font-medium">{skill.name}</p>
+        </div>
+      );
+
+      if ((category === 'frontend' || category === 'backend') && skill.description) {
+        return (
+          <HoverCard key={index} openDelay={200}>
+            <HoverCardTrigger asChild>{skillItem}</HoverCardTrigger>
+            <HoverCardContent className="w-64 bg-popover/90 backdrop-blur-sm border-border z-50">
+              <p className="text-sm text-popover-foreground">{skill.description}</p>
+            </HoverCardContent>
+          </HoverCard>
+        );
+      }
+      
+      return <div key={index}>{skillItem}</div>;
+    })}
+  </div>
+);
 
 const Skills = () => {
   return (
@@ -35,45 +66,18 @@ const Skills = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">Habilidades e Intereses</h2>
         <div className="max-w-4xl mx-auto">
-          <Accordion type="multiple" className="w-full space-y-4">
-            {Object.entries(skillsData).map(([key, skills]) => (
-              <AccordionItem key={key} value={key} className="bg-card/50 border border-border rounded-lg px-4">
-                <AccordionTrigger className="text-2xl font-semibold capitalize hover:no-underline text-primary">
-                  {key === 'interests' ? 'Intereses' : key}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pt-4">
-                    {skills.map((skill: any, index) => {
-                      const skillItem = (
-                        <div
-                          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square animate-in fade-in zoom-in-95 duration-700"
-                          style={{ animationDelay: `${index * 100}ms` }}
-                        >
-                          <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
-                            {skill.icon}
-                          </div>
-                          <p className="text-sm text-center text-muted-foreground font-medium">{skill.name}</p>
-                        </div>
-                      );
-
-                      if (key === 'frontend' || key === 'backend') {
-                        return (
-                          <HoverCard key={index} openDelay={200}>
-                            <HoverCardTrigger asChild>{skillItem}</HoverCardTrigger>
-                            <HoverCardContent className="w-64 bg-popover/90 backdrop-blur-sm border-border z-50">
-                              <p className="text-sm text-popover-foreground">{skill.description}</p>
-                            </HoverCardContent>
-                          </HoverCard>
-                        );
-                      }
-                      
-                      return <div key={index}>{skillItem}</div>;
-                    })}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
+          <Tabs defaultValue="frontend" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-4">
+              <TabsTrigger value="frontend">Frontend</TabsTrigger>
+              <TabsTrigger value="backend">Backend</TabsTrigger>
+              <TabsTrigger value="interests">Intereses</TabsTrigger>
+            </TabsList>
+            {(Object.keys(skillsData) as Array<keyof typeof skillsData>).map((key) => (
+              <TabsContent key={key} value={key}>
+                <SkillGrid skills={skillsData[key]} category={key} />
+              </TabsContent>
             ))}
-          </Accordion>
+          </Tabs>
         </div>
       </div>
     </section>
