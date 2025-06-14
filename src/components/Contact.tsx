@@ -20,17 +20,17 @@ const Contact = () => {
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-4">Let's Talk</h2>
         <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. No dudes en contactarme.
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to contact me.
         </p>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button size="lg" className="text-lg">Contactame</Button>
+            <Button size="lg" className="text-lg">Contact Me</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-lg">
             <DialogHeader>
-              <DialogTitle>Contáctame</DialogTitle>
+              <DialogTitle>Contact Me</DialogTitle>
               <DialogDescription>
-                Completa el formulario y me pondré en contacto contigo lo antes posible.
+                Fill out the form and I'll get back to you as soon as possible.
               </DialogDescription>
             </DialogHeader>
             <ContactForm onSuccess={() => setIsDialogOpen(false)} />
