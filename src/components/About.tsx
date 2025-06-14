@@ -21,7 +21,7 @@ const About = () => {
           </div>
           <div className="animate-in fade-in zoom-in-95 duration-500 delay-200">
             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-center md:text-left">
-              Turning complex ideas into <span className="text-muted-foreground">elegant solutions.</span>
+              Juan Pablo Esteva
             </h3>
             <div className="text-lg text-muted-foreground space-y-4 text-center md:text-left">
               {paragraphs.map((text, index) => (
