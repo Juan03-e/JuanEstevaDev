@@ -1,4 +1,3 @@
-
 import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import type { Mesh } from 'three'
@@ -16,7 +15,7 @@ function Box() {
   return (
     <mesh ref={meshRef} scale={1.5}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={'#ffffff'} wireframe />
+      <meshStandardMaterial color={'#9333ea'} wireframe />
     </mesh>
   )
 }

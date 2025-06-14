@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
@@ -29,7 +30,9 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-sm' : 'bg-transparent'}`}>
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold text-primary">JPE</a>
+        <a href="#home">
+          <Logo className="h-8 w-8" />
+        </a>
         <ul className="hidden md:flex space-x-8">
           {navItems.map((item) => (
             <li key={item.id}>
@@ -47,7 +50,9 @@ const Header = () => {
             `fixed top-0 h-full bg-background ease-in-out duration-500 md:hidden ${nav ? 'left-0 w-[60%]' : 'left-[-100%]'}`
           }
         >
-          <a href="#home" className="text-2xl font-bold text-primary m-4 block">JPE</a>
+          <a href="#home" className="m-4 block">
+            <Logo className="h-8 w-8" />
+          </a>
           <ul className="p-4">
             {navItems.map((item) => (
               <li key={item.id} className="p-4 border-b border-gray-700">
@@ -62,3 +67,4 @@ const Header = () => {
 };
 
 export default Header;
+
