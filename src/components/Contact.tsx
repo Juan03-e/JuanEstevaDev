@@ -1,16 +1,41 @@
 
 import { Github, Linkedin } from "lucide-react";
 import { ContactForm } from "./ContactForm";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Contact = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <section id="contact" className="py-20 md:py-32">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-4">Let's Talk</h2>
         <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to send me a message below.
+          Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. No dudes en contactarme.
         </p>
-        <ContactForm />
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button size="lg" className="text-lg">Contactame</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle>Contáctame</DialogTitle>
+              <DialogDescription>
+                Completa el formulario y me pondré en contacto contigo lo antes posible.
+              </DialogDescription>
+            </DialogHeader>
+            <ContactForm onSuccess={() => setIsDialogOpen(false)} />
+          </DialogContent>
+        </Dialog>
         <div className="flex justify-center items-center space-x-6 mt-12">
           <a href="https://github.com/Juan03-e" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Github size={32} />

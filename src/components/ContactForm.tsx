@@ -30,7 +30,11 @@ const formSchema = z.object({
   }),
 })
 
-export function ContactForm() {
+interface ContactFormProps {
+  onSuccess?: () => void;
+}
+
+export function ContactForm({ onSuccess }: ContactFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -61,6 +65,9 @@ export function ContactForm() {
           description: "Thank you for reaching out. I'll get back to you soon.",
         });
         form.reset();
+        if (onSuccess) {
+          onSuccess();
+        }
       } else {
         throw new Error("Failed to send message.");
       }
@@ -78,7 +85,7 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="name"
