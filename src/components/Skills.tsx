@@ -1,6 +1,6 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMicrosoftsqlserver, SiMongodb } from "react-icons/si";
+import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb } from "react-icons/si";
 import { Bot, BarChart, GitMerge, Mic, Sparkles } from "lucide-react";
 
 const skillsData = {
@@ -16,7 +16,7 @@ const skillsData = {
     { name: "C#", icon: <SiSharp style={{ color: '#239120' }} /> },
     { name: ".NET8", icon: <SiDotnet style={{ color: '#512BD4' }} /> },
     { name: "Razor", icon: <span className="font-bold text-fuchsia-500">{"</>"}</span> },
-    { name: "SQL", icon: <SiMicrosoftsqlserver style={{ color: '#CC2927' }} /> },
+    { name: "SQL", icon: <span className="font-extrabold text-[#CC2927]">SQL</span> },
     { name: "MongoDB", icon: <SiMongodb style={{ color: '#47A248' }} /> },
   ],
   interests: [
