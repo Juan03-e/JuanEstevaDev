@@ -1,11 +1,5 @@
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Briefcase } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const experienceData = [
   {
@@ -40,7 +34,7 @@ const experienceData = [
       "Automated key internal workflows using JavaScript and C#, reducing manual effort by over 30%.",
       "Developed custom scripts to enhance operational efficiency and user interaction with the platform.",
       "Provided technical support to international clients, focusing on integration, issue diagnosis, and troubleshooting in programmatic advertising technologies.",
-      "Resolved over 200 support tickets using HubSpot and Zendesk, maintaining a customer satisfaction rate above 90%."
+      "Resolved over 200 support tickets using HubSpot and Zendesk, maintaining a customer satisfaction rate above 90%"
     ],
   },
 ];
@@ -51,34 +45,33 @@ const Experience = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Tabs defaultValue={experienceData[0].company} className="w-full">
+            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3">
+              {experienceData.map((job) => (
+                <TabsTrigger key={job.company} value={job.company}>
+                  {job.company}
+                </TabsTrigger>
+              ))}
+            </TabsList>
             {experienceData.map((job) => (
-              <AccordionItem
-                value={job.company}
-                key={job.company}
-                className="bg-background/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden"
-              >
-                <AccordionTrigger className="px-6 py-4 hover:no-underline text-left">
-                  <div className="flex items-center gap-4">
-                    <Briefcase className="w-8 h-8 text-primary flex-shrink-0" />
-                    <div className="flex-grow">
-                      <h3 className="text-lg font-semibold">{job.role}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {job.company} &middot; {job.period}
-                      </p>
-                    </div>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4">
-                  <ul className="list-disc list-inside text-muted-foreground space-y-2 pt-2 pl-12">
-                    {job.tasks.map((task, i) => (
-                      <li key={i}>{task}</li>
-                    ))}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
+              <TabsContent key={job.company} value={job.company} className="mt-4">
+                <Card className="border-border bg-background/50 backdrop-blur-sm">
+                  <CardHeader>
+                    <p className="text-sm font-semibold text-primary">{job.period}</p>
+                    <CardTitle>{job.role}</CardTitle>
+                    <CardDescription>{job.company}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                      {job.tasks.map((task, i) => (
+                        <li key={i}>{task}</li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
             ))}
-          </Accordion>
+          </Tabs>
         </div>
       </div>
     </section>
