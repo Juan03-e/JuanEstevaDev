@@ -36,7 +36,7 @@ const Skills = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">Habilidades e Intereses</h2>
         <div className="max-w-4xl mx-auto">
-          <Accordion type="multiple" defaultValue={['frontend', 'backend']} className="w-full space-y-4">
+          <Accordion type="multiple" className="w-full space-y-4">
             {Object.entries(skillsData).map(([key, skills]) => (
               <AccordionItem key={key} value={key} className="bg-card/50 border border-border rounded-lg px-4 backdrop-blur-sm">
                 <AccordionTrigger className="text-2xl font-semibold capitalize hover:no-underline text-primary">
@@ -47,7 +47,8 @@ const Skills = () => {
                     {skills.map((skill: any, index) => {
                       const skillItem = (
                         <div
-                          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square"
+                          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square animate-in fade-in zoom-in-95 duration-500"
+                          style={{ animationDelay: `${index * 50}ms` }}
                         >
                           <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
                             {skill.icon}
@@ -58,7 +59,7 @@ const Skills = () => {
 
                       if (key === 'frontend' || key === 'backend') {
                         return (
-                          <HoverCard key={index}>
+                          <HoverCard key={index} openDelay={200}>
                             <HoverCardTrigger asChild>{skillItem}</HoverCardTrigger>
                             <HoverCardContent className="w-64 bg-popover/90 backdrop-blur-sm border-border">
                               <p className="text-sm text-popover-foreground">{skill.description}</p>
