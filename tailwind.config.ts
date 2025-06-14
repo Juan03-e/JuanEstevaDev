@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -89,12 +88,15 @@ export default {
 						height: '0'
 					}
 				},
-        'float': {
+        'galaxy-float-1': {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+          '25%': { transform: 'translate(8px, 12px) rotate(90deg)' },
+          '50%': { transform: 'translate(-10px, 25px) rotate(180deg)' },
+          '75%': { transform: 'translate(-12px, 8px) rotate(270deg)' },
+        },
+        'galaxy-float-2': {
           '0%, 100%': { transform: 'translate(0, 0)' },
-          '20%': { transform: 'translate(5px, -10px)' },
-          '40%': { transform: 'translate(-8px, 12px)' },
-          '60%': { transform: 'translate(10px, 8px)' },
-          '80%': { transform: 'translate(-5px, -5px)' },
+          '50%': { transform: 'translate(40px, 15px)' },
         }
 			},
 			animation: {
