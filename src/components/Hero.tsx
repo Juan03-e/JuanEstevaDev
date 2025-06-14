@@ -15,10 +15,10 @@ const Hero = () => {
           Developer with experience in C#, .NET, JavaScript, and more. Focused on creating scalable, high-performance web solutions.
         </p>
         <div className="flex justify-center items-center space-x-4 mb-8">
-          <a href="https://www.linkedin.com/in/juanpabloesteva/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <a href="https://www.linkedin.com/in/juan-pablo-esteva-809059269/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Linkedin size={28} />
           </a>
-          <a href="https://github.com/juanpaesteva" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <a href="https://github.com/Juan03-e" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Github size={28} />
           </a>
           <a href="mailto:juanpabloesteva1@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
@@ -36,3 +36,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

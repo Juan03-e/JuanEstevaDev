@@ -16,10 +16,10 @@ const Contact = () => {
           </Button>
         </a>
         <div className="flex justify-center items-center space-x-6 mt-12">
-          <a href="https://github.com/juanpaesteva" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <a href="https://github.com/Juan03-e" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Github size={32} />
           </a>
-          <a href="https://www.linkedin.com/in/juanpabloesteva/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <a href="https://www.linkedin.com/in/juan-pablo-esteva-809059269/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Linkedin size={32} />
           </a>
         </div>
@@ -29,3 +29,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
