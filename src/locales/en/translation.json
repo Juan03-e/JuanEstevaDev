@@ -1,0 +1,16 @@
+
+{
+  "nav_about": "About",
+  "nav_experience": "Experience",
+  "nav_skills": "Skills",
+  "nav_education": "Education",
+  "nav_contact": "Contact",
+  "hero_title": "Turning complex ideas into <1>elegant solutions.</1>",
+  "hero_subtitle": "Full Stack Developer",
+  "hero_description": "Developer with experience in C#, .NET, JavaScript, and more. Focused on creating scalable, high-performance web solutions.",
+  "hero_cv": "Download CV",
+  "about_title": "About Me",
+  "about_p1": "Full Stack Developer from Montevideo, Uruguay, with solid experience in building and maintaining scalable web applications. I am currently 22 years old and studying for a degree in Data Engineering and Artificial Intelligence at UCU.",
+  "about_p2": "Proven ability to design RESTful APIs, implement authentication systems, and develop responsive frontend interfaces with clean code. Skilled in DevOps practices, including deployment, server configuration, and automation.",
+  "about_p3": "I am focused on performance, maintainability, and delivering practical and collaborative solutions."
+}

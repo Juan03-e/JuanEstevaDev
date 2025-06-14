@@ -1,17 +1,19 @@
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
-const paragraphs = [
-  "Full Stack Developer from Montevideo, Uruguay, with solid experience in building and maintaining scalable web applications. I am currently 22 years old and studying for a degree in Data Engineering and Artificial Intelligence at UCU.",
-  "Proven ability to design RESTful APIs, implement authentication systems, and develop responsive frontend interfaces with clean code. Skilled in DevOps practices, including deployment, server configuration, and automation.",
-  "I am focused on performance, maintainability, and delivering practical and collaborative solutions."
-];
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
+  const paragraphs = [
+    t("about_p1"),
+    t("about_p2"),
+    t("about_p3"),
+  ];
+
   return (
     <section id="about" className="py-20 md:py-32">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">About Me</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">{t('about_title')}</h2>
         <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr,2fr] gap-8 md:gap-12 items-center">
           <div className="flex justify-center animate-in fade-in zoom-in-95 duration-500">
             <Avatar className="w-60 h-60 md:w-72 md:h-72 border-4 border-primary/20 shadow-lg">

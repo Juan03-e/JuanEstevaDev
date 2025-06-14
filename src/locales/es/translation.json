@@ -1,0 +1,16 @@
+
+{
+  "nav_about": "Sobre mí",
+  "nav_experience": "Experiencia",
+  "nav_skills": "Habilidades",
+  "nav_education": "Educación",
+  "nav_contact": "Contacto",
+  "hero_title": "Convirtiendo ideas complejas en <1>soluciones elegantes.</1>",
+  "hero_subtitle": "Desarrollador Full Stack",
+  "hero_description": "Desarrollador con experiencia en C#, .NET, JavaScript y más. Enfocado en crear soluciones web escalables y de alto rendimiento.",
+  "hero_cv": "Descargar CV",
+  "about_title": "Sobre Mí",
+  "about_p1": "Desarrollador Full Stack de Montevideo, Uruguay, con sólida experiencia en la construcción y mantenimiento de aplicaciones web escalables. Actualmente tengo 22 años y estoy estudiando la carrera de Ingeniería en Datos e Inteligencia Artificial en la UCU.",
+  "about_p2": "Capacidad demostrada para diseñar APIs RESTful, implementar sistemas de autenticación y desarrollar interfaces frontend responsivas con código limpio. Hábil en prácticas de DevOps, incluyendo despliegue, configuración de servidores y automatización.",
+  "about_p3": "Estoy enfocado en el rendimiento, la mantenibilidad y en ofrecer soluciones prácticas y colaborativas."
+}

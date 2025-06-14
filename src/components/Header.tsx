@@ -1,9 +1,12 @@
 
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const Header = () => {
+  const { t } = useTranslation();
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,11 +23,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { id: "about", text: "About" },
-    { id: "experience", text: "Experience" },
-    { id: "skills", text: "Skills" },
-    { id: "education", text: "Education" },
-    { id: "contact", text: "Contact" },
+    { id: "about", text: t("nav_about") },
+    { id: "experience", text: t("nav_experience") },
+    { id: "skills", text: t("nav_skills") },
+    { id: "education", text: t("nav_education") },
+    { id: "contact", text: t("nav_contact") },
   ];
 
   return (
@@ -33,15 +36,18 @@ const Header = () => {
         <a href="#home">
           <Logo className="h-8 w-8" />
         </a>
-        <ul className="hidden md:flex space-x-8">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <a href={`#${item.id}`} className="hover:text-primary transition-colors text-muted-foreground font-medium nav-link-desktop">
-                {item.text}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center space-x-8">
+          <ul className="flex space-x-8">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <a href={`#${item.id}`} className="hover:text-primary transition-colors text-muted-foreground font-medium nav-link-desktop">
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <LanguageSwitcher />
+        </div>
         <div onClick={handleNav} className="block md:hidden cursor-pointer">
           {nav ? <X size={24} /> : <Menu size={24} />}
         </div>
@@ -60,6 +66,9 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          <div className="p-4">
+            <LanguageSwitcher />
+          </div>
         </div>
       </nav>
     </header>
