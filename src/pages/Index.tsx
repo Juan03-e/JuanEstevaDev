@@ -8,6 +8,7 @@ import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingIcons from "@/components/FloatingIcons";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
@@ -23,6 +24,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <Toaster />
     </div>
   );
 };
