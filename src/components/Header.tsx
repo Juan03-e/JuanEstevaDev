@@ -20,11 +20,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { id: "about", text: "Sobre mí" },
-    { id: "experience", text: "Experiencia" },
-    { id: "skills", text: "Habilidades" },
-    { id: "education", text: "Educación" },
-    { id: "contact", text: "Contacto" },
+    { id: "about", text: "About" },
+    { id: "experience", text: "Experience" },
+    { id: "skills", text: "Skills" },
+    { id: "education", text: "Education" },
+    { id: "contact", text: "Contact" },
   ];
 
   return (
@@ -67,4 +67,3 @@ const Header = () => {
 };
 
 export default Header;
-

@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useState, useEffect, useRef } from "react";
 
@@ -5,25 +6,25 @@ const experienceData = [
   {
     role: "Full Stack Developer",
     company: "Freelancer",
-    period: "Mayo 2025 - Presente",
+    period: "May 2025 - Present",
     tasks: [
-      "Desarrollo de API RESTful con C# y .NET 8.0.",
-      "Implementación de autenticación, autorización y DTOs.",
-      "Construcción de frontend con JavaScript, HTML, y CSS.",
-      "Colaboración con diseñador para asegurar consistencia.",
-      "Diseño de base de datos MySQL desde cero.",
+      "Development of RESTful APIs with C# and .NET 8.0.",
+      "Implementation of authentication, authorization, and DTOs.",
+      "Frontend development using JavaScript, HTML, and CSS.",
+      "Collaboration with a designer to ensure consistency.",
+      "Designing a MySQL database from scratch.",
     ],
   },
   {
     role: "Junior Developer",
     company: "Casas y +",
-    period: "Junio 2025 - Presente",
+    period: "June 2025 - Present",
     tasks: [
-      "Desarrollo de funcionalidades web con PHP, JavaScript, y MySQL para CRM.",
-      "Mantenimiento y optimización de proyectos existentes.",
-      "Gestión de tareas DevOps en producción.",
-      "Automatización de procesos con scripting y Git.",
-      "Colaboración con equipo de ventas en soluciones técnicas.",
+      "Development of web features with PHP, JavaScript, and MySQL for a CRM.",
+      "Maintenance and optimization of existing projects.",
+      "Management of DevOps tasks in production.",
+      "Process automation with scripting and Git.",
+      "Collaboration with the sales team on technical solutions.",
     ],
   },
   {
@@ -102,7 +103,7 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Experiencia Laboral</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
         <div className="relative max-w-3xl mx-auto border-l-2 border-primary/30">
           {experienceData.map((job, index) => (
             <ExperienceItem key={index} job={job} index={index} />
