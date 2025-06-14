@@ -1,10 +1,12 @@
 
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThreeDScene from "./ThreeDScene";
 
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center text-center bg-grid-white/[0.03] relative overflow-hidden">
+       <ThreeDScene />
        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="container mx-auto px-6 z-10">
         <h1 className="text-5xl md:text-7xl font-extrabold text-primary mb-2">Juan Pablo Esteva</h1>
