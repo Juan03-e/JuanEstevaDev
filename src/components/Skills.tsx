@@ -47,8 +47,8 @@ const Skills = () => {
                     {skills.map((skill: any, index) => {
                       const skillItem = (
                         <div
-                          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square animate-in fade-in zoom-in-95 duration-500"
-                          style={{ animationDelay: `${index * 50}ms` }}
+                          className="group flex flex-col items-center justify-center p-4 bg-secondary/30 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-secondary/80 cursor-pointer aspect-square animate-in fade-in zoom-in-95 duration-700"
+                          style={{ animationDelay: `${index * 100}ms` }}
                         >
                           <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
                             {skill.icon}
@@ -61,7 +61,7 @@ const Skills = () => {
                         return (
                           <HoverCard key={index} openDelay={200}>
                             <HoverCardTrigger asChild>{skillItem}</HoverCardTrigger>
-                            <HoverCardContent className="w-64 bg-popover/90 backdrop-blur-sm border-border">
+                            <HoverCardContent className="w-64 bg-popover/90 backdrop-blur-sm border-border z-50">
                               <p className="text-sm text-popover-foreground">{skill.description}</p>
                             </HoverCardContent>
                           </HoverCard>
