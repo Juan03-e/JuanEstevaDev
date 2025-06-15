@@ -1,3 +1,4 @@
+
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -16,26 +17,29 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
 import { useState } from "react"
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
-})
+import { useTranslation } from "react-i18next"
 
 interface ContactFormProps {
   onSuccess?: () => void;
 }
 
 export function ContactForm({ onSuccess }: ContactFormProps) {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+
+  const formSchema = z.object({
+    name: z.string().min(2, {
+      message: t("validation_name_min"),
+    }),
+    email: z.string().email({
+      message: t("validation_email_invalid"),
+    }),
+    message: z.string().min(10, {
+      message: t("validation_message_min"),
+    }),
+  })
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,8 +63,8 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
 
       if (response.ok) {
         toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
+          title: t("contact_form_toast_success_title"),
+          description: t("contact_form_toast_success_description"),
         });
         form.reset();
         if (onSuccess) {
@@ -72,8 +76,8 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request. Please try again.",
+        title: t("contact_form_toast_error_title"),
+        description: t("contact_form_toast_error_description"),
       });
       console.error(error);
     } finally {
@@ -89,9 +93,9 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{t("contact_form_name_label")}</FormLabel>
               <FormControl>
-                <Input placeholder="Your Name" {...field} />
+                <Input placeholder={t("contact_form_name_placeholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -102,9 +106,9 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{t("contact_form_email_label")}</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="your.email@example.com" {...field} />
+                <Input type="email" placeholder={t("contact_form_email_placeholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -115,16 +119,16 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{t("contact_form_message_label")}</FormLabel>
               <FormControl>
-                <Textarea placeholder="Your message..." className="resize-none" {...field} />
+                <Textarea placeholder={t("contact_form_message_placeholder")} className="resize-none" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button type="submit" size="lg" className="w-full text-lg" disabled={isLoading}>
-          {isLoading ? "Sending..." : "Send Message"}
+          {isLoading ? t("contact_form_button_sending") : t("contact_form_button_send")}
         </Button>
       </form>
     </Form>

@@ -78,5 +78,20 @@
   "contact_description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to contact me.",
   "contact_button": "Contact Me",
   "contact_dialog_title": "Contact Me",
-  "contact_dialog_description": "Fill out the form and I'll get back to you as soon as possible."
+  "contact_dialog_description": "Fill out the form and I'll get back to you as soon as possible.",
+  "contact_form_name_label": "Name",
+  "contact_form_name_placeholder": "Your Name",
+  "contact_form_email_label": "Email",
+  "contact_form_email_placeholder": "your.email@example.com",
+  "contact_form_message_label": "Message",
+  "contact_form_message_placeholder": "Your message...",
+  "contact_form_button_send": "Send Message",
+  "contact_form_button_sending": "Sending...",
+  "contact_form_toast_success_title": "Message Sent!",
+  "contact_form_toast_success_description": "Thank you for reaching out. I'll get back to you soon.",
+  "contact_form_toast_error_title": "Uh oh! Something went wrong.",
+  "contact_form_toast_error_description": "There was a problem with your request. Please try again.",
+  "validation_name_min": "Name must be at least 2 characters.",
+  "validation_email_invalid": "Please enter a valid email address.",
+  "validation_message_min": "Message must be at least 10 characters."
 }

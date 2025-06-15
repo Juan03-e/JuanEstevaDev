@@ -78,5 +78,20 @@
   "contact_description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. No dudes en contactarme.",
   "contact_button": "Contáctame",
   "contact_dialog_title": "Contáctame",
-  "contact_dialog_description": "Completa el formulario y me pondré en contacto contigo lo antes posible."
+  "contact_dialog_description": "Completa el formulario y me pondré en contacto contigo lo antes posible.",
+  "contact_form_name_label": "Nombre",
+  "contact_form_name_placeholder": "Tu Nombre",
+  "contact_form_email_label": "Correo Electrónico",
+  "contact_form_email_placeholder": "tu.correo@ejemplo.com",
+  "contact_form_message_label": "Mensaje",
+  "contact_form_message_placeholder": "Tu mensaje...",
+  "contact_form_button_send": "Enviar Mensaje",
+  "contact_form_button_sending": "Enviando...",
+  "contact_form_toast_success_title": "¡Mensaje Enviado!",
+  "contact_form_toast_success_description": "Gracias por contactarme. Te responderé pronto.",
+  "contact_form_toast_error_title": "¡Uy! Algo salió mal.",
+  "contact_form_toast_error_description": "Hubo un problema con tu solicitud. Por favor, inténtalo de nuevo.",
+  "validation_name_min": "El nombre debe tener al menos 2 caracteres.",
+  "validation_email_invalid": "Por favor, introduce una dirección de correo electrónico válida.",
+  "validation_message_min": "El mensaje debe tener al menos 10 caracteres."
 }
