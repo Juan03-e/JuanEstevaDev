@@ -1,26 +1,29 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { GraduationCap } from "lucide-react";
-
-const educationData = [
-  {
-    degree: "Data Engineering and Artificial Intelligence",
-    institution: "Catholic University of Uruguay",
-    period: "August 2025 - Present",
-  },
-  {
-    degree: "Analyst in Information Technologies",
-    institution: "ORT University Uruguay",
-    period: "March 2023 - July 2025",
-    details: "Average grade of 93%",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Education = () => {
+  const { t } = useTranslation();
+
+  const educationData = [
+    {
+      degree: t("education_ucu_degree"),
+      institution: t("education_ucu_institution"),
+      period: t("education_ucu_period"),
+    },
+    {
+      degree: t("education_ort_degree"),
+      institution: t("education_ort_institution"),
+      period: t("education_ort_period"),
+      details: t("education_ort_details"),
+    },
+  ];
+
   return (
     <section id="education" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Education</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">{t("education_title")}</h2>
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           {educationData.map((edu, index) => (
             <Card key={index} className="bg-background/50 border-border backdrop-blur-sm">

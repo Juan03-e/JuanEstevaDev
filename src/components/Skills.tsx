@@ -3,34 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SiJavascript, SiHtml5, SiCss3, SiReact, SiBootstrap, SiIonic, SiSharp, SiDotnet, SiMongodb, SiGit, SiGithub } from "react-icons/si";
 import { Bot, BarChart, GitMerge, Mic, Sparkles, Webhook } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-
-const skillsData = {
-  frontend: [
-    { name: "JavaScript", icon: <SiJavascript style={{ color: '#F7DF1E' }} />, description: "A high-level programming language, essential for interactive web development." },
-    { name: "HTML", icon: <SiHtml5 style={{ color: '#E34F26' }} />, description: "Standard markup language for structuring content on the web." },
-    { name: "CSS", icon: <SiCss3 style={{ color: '#1572B6' }} />, description: "Language for describing the presentation and style of HTML documents." },
-    { name: "React", icon: <SiReact style={{ color: '#61DAFB' }} />, description: "A JavaScript library for building user interfaces or UI components." },
-    { name: "Bootstrap", icon: <SiBootstrap style={{ color: '#7952B3' }} />, description: "CSS framework for developing responsive, mobile-first websites." },
-    { name: "Ionic", icon: <SiIonic style={{ color: '#3880FF' }} />, description: "SDK for developing hybrid and cross-platform mobile applications." },
-  ],
-  backend: [
-    { name: "C#", icon: <SiSharp style={{ color: '#239120' }} />, description: "A modern, object-oriented programming language developed by Microsoft." },
-    { name: ".NET8", icon: <SiDotnet style={{ color: '#512BD4' }} />, description: "Framework for building high-performance, cross-platform applications." },
-    { name: "Razor", icon: <span className="font-bold text-fuchsia-500">{"</>"}</span>, description: "Markup syntax for embedding C# code in web pages." },
-    { name: "SQL", icon: <span className="font-extrabold text-[#CC2927]">SQL</span>, description: "Standard language for managing and manipulating relational databases." },
-    { name: "MongoDB", icon: <SiMongodb style={{ color: '#47A248' }} />, description: "Document-oriented NoSQL database, ideal for scalable applications." },
-    { name: "RESTful APIs", icon: <Webhook className="text-sky-500" />, description: "Design and development of APIs following REST architecture principles." },
-    { name: "Git", icon: <SiGit style={{ color: '#F05032' }} />, description: "Distributed version control system for tracking changes in source code." },
-    { name: "GitHub", icon: <SiGithub />, description: "Git repository hosting platform that offers collaboration tools for software development." },
-  ],
-  interests: [
-    { name: "Clean Code", icon: <Sparkles className="text-yellow-400" /> },
-    { name: "Automation", icon: <Bot className="text-cyan-400" /> },
-    { name: "Data Analysis", icon: <BarChart className="text-green-400" /> },
-    { name: "DevOps Fundamentals", icon: <GitMerge className="text-orange-400" /> },
-    { name: "Public Speaking", icon: <Mic className="text-purple-400" /> },
-  ],
-};
+import { useTranslation } from "react-i18next";
 
 const SkillGrid = ({ skills, category }: { skills: {name: string, icon: JSX.Element, description?: string}[], category: string }) => (
   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pt-4">
@@ -64,16 +37,46 @@ const SkillGrid = ({ skills, category }: { skills: {name: string, icon: JSX.Elem
 );
 
 const Skills = () => {
+  const { t } = useTranslation();
+
+  const skillsData = {
+    frontend: [
+      { name: "JavaScript", icon: <SiJavascript style={{ color: '#F7DF1E' }} />, description: t("skill_js_desc") },
+      { name: "HTML", icon: <SiHtml5 style={{ color: '#E34F26' }} />, description: t("skill_html_desc") },
+      { name: "CSS", icon: <SiCss3 style={{ color: '#1572B6' }} />, description: t("skill_css_desc") },
+      { name: "React", icon: <SiReact style={{ color: '#61DAFB' }} />, description: t("skill_react_desc") },
+      { name: "Bootstrap", icon: <SiBootstrap style={{ color: '#7952B3' }} />, description: t("skill_bootstrap_desc") },
+      { name: "Ionic", icon: <SiIonic style={{ color: '#3880FF' }} />, description: t("skill_ionic_desc") },
+    ],
+    backend: [
+      { name: "C#", icon: <SiSharp style={{ color: '#239120' }} />, description: t("skill_csharp_desc") },
+      { name: ".NET8", icon: <SiDotnet style={{ color: '#512BD4' }} />, description: t("skill_dotnet_desc") },
+      { name: "Razor", icon: <span className="font-bold text-fuchsia-500">{"</>"}</span>, description: t("skill_razor_desc") },
+      { name: "SQL", icon: <span className="font-extrabold text-[#CC2927]">SQL</span>, description: t("skill_sql_desc") },
+      { name: "MongoDB", icon: <SiMongodb style={{ color: '#47A248' }} />, description: t("skill_mongodb_desc") },
+      { name: "RESTful APIs", icon: <Webhook className="text-sky-500" />, description: t("skill_rest_desc") },
+      { name: "Git", icon: <SiGit style={{ color: '#F05032' }} />, description: t("skill_git_desc") },
+      { name: "GitHub", icon: <SiGithub />, description: t("skill_github_desc") },
+    ],
+    interests: [
+      { name: t("interest_clean_code"), icon: <Sparkles className="text-yellow-400" /> },
+      { name: t("interest_automation"), icon: <Bot className="text-cyan-400" /> },
+      { name: t("interest_data_analysis"), icon: <BarChart className="text-green-400" /> },
+      { name: t("interest_devops"), icon: <GitMerge className="text-orange-400" /> },
+      { name: t("interest_public_speaking"), icon: <Mic className="text-purple-400" /> },
+    ],
+  };
+
   return (
     <section id="skills" className="py-20 md:py-32">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Skills & Interests</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">{t("skills_title")}</h2>
         <div className="max-w-4xl mx-auto">
           <Tabs defaultValue="frontend" className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-4">
-              <TabsTrigger value="frontend">Frontend</TabsTrigger>
-              <TabsTrigger value="backend">Backend</TabsTrigger>
-              <TabsTrigger value="interests">Interests</TabsTrigger>
+              <TabsTrigger value="frontend">{t("skills_tab_frontend")}</TabsTrigger>
+              <TabsTrigger value="backend">{t("skills_tab_backend")}</TabsTrigger>
+              <TabsTrigger value="interests">{t("skills_tab_interests")}</TabsTrigger>
             </TabsList>
             {(Object.keys(skillsData) as Array<keyof typeof skillsData>).map((key) => (
               <TabsContent key={key} value={key}>

@@ -11,26 +11,28 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <section id="contact" className="py-20 md:py-32">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-4">Let's Talk</h2>
+        <h2 className="text-4xl font-bold mb-4">{t("contact_title")}</h2>
         <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to contact me.
+          {t("contact_description")}
         </p>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button size="lg" className="text-lg">Contact Me</Button>
+            <Button size="lg" className="text-lg">{t("contact_button")}</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-lg">
             <DialogHeader>
-              <DialogTitle>Contact Me</DialogTitle>
+              <DialogTitle>{t("contact_dialog_title")}</DialogTitle>
               <DialogDescription>
-                Fill out the form and I'll get back to you as soon as possible.
+                {t("contact_dialog_description")}
               </DialogDescription>
             </DialogHeader>
             <ContactForm onSuccess={() => setIsDialogOpen(false)} />

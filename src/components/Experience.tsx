@@ -1,46 +1,31 @@
-
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
-
-const experienceData = [
-  {
-    role: "Full Stack Developer",
-    company: "Freelancer",
-    period: "May 2025 - Present",
-    tasks: [
-      "Development of RESTful APIs with C# and .NET 8.0.",
-      "Implementation of authentication, authorization, and DTOs.",
-      "Frontend development using JavaScript, HTML, and CSS.",
-      "Collaboration with a designer to ensure consistency.",
-      "Designing a MySQL database from scratch.",
-    ],
-  },
-  {
-    role: "Junior Developer",
-    company: "Casas y +",
-    period: "June 2025 - Present",
-    tasks: [
-      "Development of web features with PHP, JavaScript, and MySQL for a CRM.",
-      "Maintenance and optimization of existing projects.",
-      "Management of DevOps tasks in production.",
-      "Process automation with scripting and Git.",
-      "Collaboration with the sales team on technical solutions.",
-    ],
-  },
-  {
-    role: "Technical Support Specialist",
-    company: "E-Planning",
-    period: "Remote - Argentina | Mar 2024 - Mar 2025",
-    tasks: [
-      "Automated key internal workflows using JavaScript and C#, reducing manual effort by over 30%.",
-      "Developed custom scripts to enhance operational efficiency and user interaction with the platform.",
-      "Provided technical support to international clients, focusing on integration, issue diagnosis, and troubleshooting in programmatic advertising technologies.",
-      "Resolved over 200 support tickets using HubSpot and Zendesk, maintaining a customer satisfaction rate above 90%"
-    ],
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Experience = () => {
+  const { t } = useTranslation();
+
+  const experienceData = [
+    {
+      role: t("experience_freelancer_role"),
+      company: t("experience_freelancer_company"),
+      period: t("experience_freelancer_period"),
+      tasks: t("experience_freelancer_tasks", { returnObjects: true }) as string[],
+    },
+    {
+      role: t("experience_casasymas_role"),
+      company: t("experience_casasymas_company"),
+      period: t("experience_casasymas_period"),
+      tasks: t("experience_casasymas_tasks", { returnObjects: true }) as string[],
+    },
+    {
+      role: t("experience_eplanning_role"),
+      company: t("experience_eplanning_company"),
+      period: t("experience_eplanning_period"),
+      tasks: t("experience_eplanning_tasks", { returnObjects: true }) as string[],
+    },
+  ];
+
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -72,7 +57,7 @@ const Experience = () => {
   return (
     <section id="experience" ref={sectionRef} className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">{t("experience_title")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experienceData.map((job, index) => (
             <Card 
